@@ -5,7 +5,7 @@ try:
     from bs4 import BeautifulSoup as par
     from requests import *
 except:
-    exit("\n\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] MODULE BELUM TERINSTALL SEMUA\n    SILAHKAN BACA README.md\n")
+    exit("\n\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Required modules not found!\n    Please read README.md for the installation\n")
 
 if platform.python_version().split(".")[0] != "3":
     exit("\x1b[1;97m[\x1b[1;91m!\x1b[1;97m] KETIK: python " + sys.argv[0])
@@ -40,9 +40,9 @@ def Membuat_ssl(id, cookies, user, pw, server):
                                                                                          str(posd)).group(1).replace(
             "-", " ").upper() + "\n")
     elif "Username already exists !" in posd:
-        exit("  \x1b[1;97m[\x1b[1;91m*\x1b[1;97m] USERNAME SUDAH DIBUAT DENGAN ORANG\n")
+        exit("  \x1b[1;97m[\x1b[1;91m*\x1b[1;97m] Username already exists!\n")
     else:
-        exit("  \x1b[1;97m[\x1b[1;91m+\x1b[1;97m] KAMU TELAH MEMBUAT AKUN MELEWATI BATAS\n")
+        exit("  \x1b[1;97m[\x1b[1;91m+\x1b[1;97m] Please enter a valid username.\n")
 
 
 def Membuat_ssh(id, cookies, user, pw, server):
@@ -74,9 +74,9 @@ def Membuat_ssh(id, cookies, user, pw, server):
                                                                                          str(posd)).group(1).replace(
             "-", " ").upper() + "\n")
     elif "Username already exists !" in posd:
-        exit("  \x1b[1;97m[\x1b[1;91m*\x1b[1;97m] USERNAME SUDAH DIBUAT DENGAN ORANG\n")
+        exit("  \x1b[1;97m[\x1b[1;91m*\x1b[1;97m] Username already exists!\n")
     else:
-        exit("  \x1b[1;97m[\x1b[1;91m+\x1b[1;97m] KAMU TELAH MEMBUAT AKUN MELEWATI BATAS\n")
+        exit("  \x1b[1;97m[\x1b[1;91m+\x1b[1;97m] Please enter a valid username.\n")
 
 
 class SSL_TLS:
@@ -100,7 +100,7 @@ class SSL_TLS:
         try:
             chekin = self.link[int(self.pilih) - 1]
         except (ValueError, IndexError):
-            exit("  \x1b[1;97m[\x1b[1;91m!\x1b[1;97m] MASUKAN ANGKANYA AJA BRO..")
+            exit("  \x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Internal Server Error :(")
         cek_2 = par(get(chekin).text, "html.parser")
         if cek_2.find("div", class_="progress-bar progress-bar-danger") is None:
             serverid = cek_2.find('input', {"type": "hidden"}).get("value")
@@ -111,7 +111,7 @@ class SSL_TLS:
             print("\x1b[1;91m+-----------------------------------+")
             Membuat_ssl(serverid, cookie, user, pasw, chekin)
         if cek_2.find("div", class_="progress-bar progress-bar-danger") is not None:
-            exit("  \x1b[1;97m[\x1b[1;91m#\x1b[1;97m] ACCOUNT NOT AVAILABLE\n      SILAHKAN PILIH SERVER LAIN..\n")
+            exit("  \x1b[1;97m[\x1b[1;91m#\x1b[1;97m] ACCOUNT NOT AVAILABLE\n      Please try again later...\n")
             time.sleep(2)
             system('python ' + sys.argv[0])
 
@@ -138,7 +138,7 @@ class SSH:
         try:
             chekin = self.link[int(self.pilih) - 1]
         except (ValueError, IndexError):
-            exit("  \x1b[1;97m[\x1b[1;91m!\x1b[1;97m] MASUKAN ANGKANYA AJA BRO..")
+            exit("  \x1b[1;97m[\x1b[1;91m!\x1b[1;97m] Internal Server Error :(")
         cek_2 = par(get(chekin).text, "html.parser")
         if cek_2.find("div", class_="progress-bar progress-bar-danger") is None:
             serverid = cek_2.find('input', {"type": "hidden"}).get("value")
@@ -149,7 +149,7 @@ class SSH:
             print("\x1b[1;91m+-----------------------------------+")
             Membuat_ssh(serverid, cookie, user, pasw, chekin)
         if cek_2.find("div", class_="progress-bar progress-bar-danger") is not None:
-            exit("  \x1b[1;97m[\x1b[1;91m#\x1b[1;97m] ACCOUNT NOT AVAILABLE\n      SILAHKAN PILIH SERVER LAIN..\n")
+            exit("  \x1b[1;97m[\x1b[1;91m#\x1b[1;97m] ACCOUNT NOT AVAILABLE\n      Please try again later...\n")
             time.sleep(2)
             system('python ' + sys.argv[0])
 
@@ -159,7 +159,7 @@ def Menu():
    \x1b[1;93m ╔═╗╦═╗╔═╗╔═╗╔╦╗╔═╗  ╔═╗╔═╗╦ ╦
     ║  ╠╦╝║╣ ╠═╣ ║ ║╣   ╚═╗╚═╗╠═╣
     ╚═╝╩╚═╚═╝╩ ╩ ╩ ╚═╝  ╚═╝╚═╝╩ ╩
-\x1b[1;97m     https://github.com/matheesha-pathirana
+\x1b[1;97m     https://github.com/matheeshapathirana
 \x1b[1;91m+-----------------------------------+
 \x1b[1;96m  {\x1b[1;92m01\x1b[1;96m} \x1b[1;97mCREATE SSL/TLS MONTHLY
 \x1b[1;96m  {\x1b[1;92m02\x1b[1;96m} \x1b[1;97mCREATE SSH MONTHLY
@@ -174,10 +174,10 @@ def Menu():
     elif pilih in ("2", "02"):
         nice = SSH
     elif pilih in ("0", "00"):
-        exit("\x1b[1;91m+-----------------------------------+\n \x1b[1;97mTERIMAKASIH SUDAH MEMAKAI TOOLS SAYA\n")
+        exit("\x1b[1;91m+-----------------------------------+\n \x1b[1;97m...\n")
     else:
         exit(
-            " \x1b[1;91m >>> \x1b[1;97mMAAF MENU \x1b[1;91m'\x1b[1;97m" + pilih + "\x1b[1;91m'\x1b[1;97m TIDAK DITEMUKAN\n")
+            " \x1b[1;91m >>> \x1b[1;97mMAAF MENU \x1b[1;91m'\x1b[1;97m" + pilih + "\x1b[1;91m'\x1b[1;97m ...\n")
     print("\x1b[1;91m+-----------------------------------+")
     nice().Chek()
 
